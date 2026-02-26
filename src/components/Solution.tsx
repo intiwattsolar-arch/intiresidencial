@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
+import inversorImg from "@/assets/inversor-huawei.jpg";
 
 const Solution = () => (
   <section id="solucion" className="py-24 md:py-32 bg-secondary">
     <div className="container mx-auto px-4">
-      <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -30,9 +31,16 @@ const Solution = () => (
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="flex items-center justify-center"
+          className="flex flex-col items-center gap-6"
         >
-          <div className="bg-card rounded-2xl p-10 border border-border text-center shadow-sm">
+          <div className="rounded-2xl overflow-hidden border border-border shadow-sm">
+            <img
+              src={inversorImg}
+              alt="Inversor Huawei instalado profesionalmente"
+              className="w-full h-72 object-cover"
+            />
+          </div>
+          <div className="bg-card rounded-2xl p-8 border border-border text-center shadow-sm w-full">
             <p className="text-5xl md:text-6xl font-serif text-primary mb-2">100+</p>
             <p className="text-muted-foreground text-sm">hogares confían en IntiWatt</p>
           </div>

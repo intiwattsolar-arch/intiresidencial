@@ -4,7 +4,9 @@ import Problem from "@/components/Problem";
 import Solution from "@/components/Solution";
 import Process from "@/components/Process";
 import Projects from "@/components/Projects";
+import Postventa from "@/components/Postventa";
 import Benefits from "@/components/Benefits";
+import CalculatorSection from "@/components/Calculator";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
@@ -17,7 +19,9 @@ const Index = () => (
     <Solution />
     <Process />
     <Projects />
+    <Postventa />
     <Benefits />
+    <CalculatorSection />
     <FAQ />
     <CTA />
     <Footer />

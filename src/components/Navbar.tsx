@@ -3,12 +3,13 @@ import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo-intiwatt.png";
 
 const links = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Solución", href: "#solucion" },
-  { label: "Proceso", href: "#proceso" },
-  { label: "Proyectos", href: "#proyectos" },
-  { label: "Beneficios", href: "#beneficios" },
-  { label: "Preguntas", href: "#preguntas" },
+  { label: "Inicio", href: "https://www.intiwatt.com", external: true },
+  { label: "Solución", href: "#solucion", external: false },
+  { label: "Proceso", href: "#proceso", external: false },
+  { label: "Proyectos", href: "#proyectos", external: false },
+  { label: "Beneficios", href: "#beneficios", external: false },
+  { label: "Preguntas", href: "#preguntas", external: false },
+  { label: "Calcula tu ahorro", href: "#calculadora", external: false },
 ];
 
 const Navbar = () => {
@@ -17,7 +18,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
-        <a href="#inicio" className="flex items-center gap-2">
+        <a href="https://www.intiwatt.com" className="flex items-center gap-2">
           <img src={logo} alt="IntiWatt" className="h-10 w-10" />
           <span className="font-serif text-xl text-foreground">IntiWatt</span>
         </a>
@@ -25,7 +26,12 @@ const Navbar = () => {
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a
+              key={l.label}
+              href={l.href}
+              {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              className="text-sm text-foreground hover:text-primary transition-colors"
+            >
               {l.label}
             </a>
           ))}
@@ -49,7 +55,13 @@ const Navbar = () => {
       {open && (
         <div className="md:hidden bg-background border-b border-border px-4 pb-4">
           {links.map((l) => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block py-2 text-sm text-muted-foreground hover:text-foreground">
+            <a
+              key={l.label}
+              href={l.href}
+              {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              onClick={() => setOpen(false)}
+              className="block py-2 text-sm text-foreground hover:text-primary"
+            >
               {l.label}
             </a>
           ))}

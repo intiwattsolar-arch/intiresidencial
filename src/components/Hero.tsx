@@ -1,11 +1,19 @@
 import { motion } from "framer-motion";
-import heroImg from "@/assets/hero-solar.jpg";
 
 const Hero = () => (
   <section id="inicio" className="relative min-h-screen flex items-end pb-20 md:pb-32 overflow-hidden">
-    {/* Background image */}
+    {/* Video background */}
     <div className="absolute inset-0">
-      <img src={heroImg} alt="Casa con paneles solares" className="w-full h-full object-cover" />
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="w-full h-full object-cover"
+        poster=""
+      >
+        <source src="/hero-video.mp4" type="video/mp4" />
+      </video>
       <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/40 to-foreground/10" />
     </div>
 
