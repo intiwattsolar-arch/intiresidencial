@@ -1,33 +1,73 @@
 import { motion } from "framer-motion";
-import { Sun } from "lucide-react";
+import { useState } from "react";
+
+import install1Workers from "@/assets/projects/install1-workers.jpg";
+import install1Panels from "@/assets/projects/install1-panels.jpg";
+import install1Inverter from "@/assets/projects/install1-inverter.jpg";
+import install2Panels from "@/assets/projects/install2-panels.jpg";
+import install2Closeup from "@/assets/projects/install2-closeup.jpg";
+import install2Deye from "@/assets/projects/install2-deye.jpg";
+import install3Structure from "@/assets/projects/install3-structure.jpg";
+import install3Installing from "@/assets/projects/install3-installing.jpg";
 
 const projects = [
   {
     title: "Casa en zona residencial",
     desc: "Sistema on-grid de 6 kW. Reducción del 70% en la factura eléctrica.",
     specs: "8 paneles · Inversor Deye · Córdoba",
-  },
-  {
-    title: "Vivienda con respaldo energético",
-    desc: "Sistema híbrido con baterías Deye. Autonomía parcial durante cortes de luz.",
-    specs: "10 paneles · Inversor + Batería LiFePO4 · Córdoba",
-  },
-  {
-    title: "Instalación residencial completa",
-    desc: "Sistema híbrido con doble batería Deye, dimensionado para consumo alto.",
-    specs: "12 paneles · Inversor 8kW · 2 baterías · Santiago del Estero",
-  },
-  {
-    title: "Galpón con sistema off-grid",
-    desc: "Instalación en terreno rural con paneles en suelo y banco de baterías Deye de alta capacidad.",
-    specs: "16 paneles · Inversor + 12 baterías LiFePO4 · Santiago del Estero",
+    images: [install1Panels, install1Workers, install1Inverter],
   },
   {
     title: "Hogar con ahorro y respaldo",
     desc: "Sistema híbrido residencial con paneles en techo de chapa y protecciones eléctricas dedicadas.",
     specs: "10 paneles · Inversor Deye 5kW · 2 baterías · Córdoba",
+    images: [install2Panels, install2Closeup, install2Deye],
+  },
+  {
+    title: "Galpón con sistema off-grid",
+    desc: "Instalación en terreno rural con estructura metálica a medida y paneles montados sobre ella.",
+    specs: "16 paneles · Inversor + baterías LiFePO4 · Santiago del Estero",
+    images: [install3Structure, install3Installing],
   },
 ];
+
+const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
+  const [current, setCurrent] = useState(0);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1 }}
+      className="bg-card rounded-xl border border-border overflow-hidden hover:shadow-lg transition-shadow"
+    >
+      <div className="relative h-56 overflow-hidden">
+        <img
+          src={project.images[current]}
+          alt={project.title}
+          className="w-full h-full object-cover transition-opacity duration-300"
+        />
+        {project.images.length > 1 && (
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+            {project.images.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                className={`w-2 h-2 rounded-full transition-colors ${i === current ? "bg-primary" : "bg-primary-foreground/50"}`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+      <div className="p-6">
+        <h3 className="font-serif text-lg text-foreground mb-2">{project.title}</h3>
+        <p className="text-muted-foreground text-sm mb-3 leading-relaxed">{project.desc}</p>
+        <p className="text-xs text-primary font-medium">{project.specs}</p>
+      </div>
+    </motion.div>
+  );
+};
 
 const Projects = () => (
   <section id="proyectos" className="py-24 md:py-32 bg-secondary">
@@ -47,23 +87,7 @@ const Projects = () => (
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
         {projects.map((p, i) => (
-          <motion.div
-            key={p.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="bg-card rounded-xl border border-border overflow-hidden hover:shadow-lg transition-shadow"
-          >
-            <div className="h-48 bg-muted flex items-center justify-center">
-              <Sun className="w-12 h-12 text-primary/30" />
-            </div>
-            <div className="p-6">
-              <h3 className="font-serif text-lg text-foreground mb-2">{p.title}</h3>
-              <p className="text-muted-foreground text-sm mb-3 leading-relaxed">{p.desc}</p>
-              <p className="text-xs text-primary font-medium">{p.specs}</p>
-            </div>
-          </motion.div>
+          <ProjectCard key={p.title} project={p} index={i} />
         ))}
       </div>
 
