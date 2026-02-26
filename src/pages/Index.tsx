@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Problem from "@/components/Problem";
 import Solution from "@/components/Solution";
+import ModosFuncionamiento from "@/components/ModosFuncionamiento";
 import Process from "@/components/Process";
 import Projects from "@/components/Projects";
 import Postventa from "@/components/Postventa";
@@ -17,6 +18,7 @@ const Index = () => (
     <Hero />
     <Problem />
     <Solution />
+    <ModosFuncionamiento />
     <Process />
     <Projects />
     <Postventa />

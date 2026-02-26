@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { PiggyBank, Shield, Sofa, Home } from "lucide-react";
+import { PiggyBank, Shield, Sofa, Home, FileCheck, Zap } from "lucide-react";
 
 const benefits = [
   {
@@ -22,6 +22,16 @@ const benefits = [
     title: "Valor del inmueble",
     desc: "Una vivienda con energía solar es más atractiva, más eficiente y vale más en el mercado.",
   },
+  {
+    icon: FileCheck,
+    title: "Usuario Generador y Prosumidor 4.0",
+    desc: "Te ayudamos a tramitar tu habilitación como Usuario Generador y acceder al régimen Prosumidor 4.0 para inyectar excedentes a la red.",
+  },
+  {
+    icon: Zap,
+    title: "Sistema a medida, sin sobras ni faltantes",
+    desc: "Diseñamos cada proyecto para que la generación se ajuste a tu consumo real. El objetivo es que no sobre ni falte: máximo aprovechamiento, mínimo desperdicio.",
+  },
 ];
 
 const Benefits = () => (
@@ -39,7 +49,7 @@ const Benefits = () => (
         </h2>
       </motion.div>
 
-      <div className="grid sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
         {benefits.map((b, i) => (
           <motion.div
             key={b.title}
